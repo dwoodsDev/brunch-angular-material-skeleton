@@ -1,0 +1,157 @@
+<div id="main">
+    <div ng-controller="RadioController as radios">
+        <md-card>
+            <md-card-content>
+                <md-tabs md-stretch-tabs="always" md-dynamic-height="true">
+                    <md-tab>
+                        <md-tab-label><div class="tab-label" data-aut="radios-security-div-radio1Name">Radio 1 - {{ radios[0].name }}</div></md-tab-label>
+                        <md-tab-body>
+                            <div layout="row">
+                                <div flex="33" layout-padding>
+                                    <md-input-container>
+                                        <label data-aut="radios-security-label-radio1Ssid">SSID</label>
+                                        <input ng-model="radios[0].ssid" data-aut="radios-security-input-radio1Ssid" md-maxlength="32" maxlength="32">
+                                    </md-input-container>
+                                </div>
+                                <div flex="33" layout-padding>
+                                    <md-input-container>
+                                        <label data-aut="radios-security-label-radio1SecurityProfile">Security Profile</label>
+                                        <md-select ng-model="radios[0].security_profile" data-aut="radios-security-select-radio1SecurityProfile">
+                                            <md-option>WPA2</md-option>
+                                            <md-option>None</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div flex="33" layout-padding>
+                                    <span ng-show="radios[0].security_profile==='WPA2'">
+                                        <md-input-container>
+                                            <label data-aut="radios-security-label-radio1Password">Password</label>
+                                            <input ng-model="radios[0].psk" data-aut="radios-security-input-radio1Password" minlength="8"
+                                                   md-maxlength="63" maxlength="63" required set-focus="radios[0].security_profile==='WPA2'">
+                                        </md-input-container>
+                                    </span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div ng-repeat="profile in radios[0].profiles">
+                                <div layout="row">
+                                    <div flex="50" layout-padding>
+                                        <div ng-if="profile._id==='All' || profile._id==='Air'">
+                                            <md-checkbox ng-model="profile.enabled" data-aut="radios-profiles-checkbox-radio1{{ profile._id }}Enabled">
+                                                <div data-aut="radios-profiles-div-radio1{{ profile._id }}Enabled">Cabin Enabled</div>
+                                            </md-checkbox>
+                                        </div>
+                                        <div ng-if="profile._id==='Ground'">
+                                            <md-checkbox ng-model="profile.enabled" data-aut="radios-profiles-checkbox-radio1{{ profile._id }}Enabled">
+                                                <div data-aut="radios-profiles-div-radio1{{ profile._id }}Enabled">FBO Enabled</div>
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <div flex="50" layout-padding>
+                                        <div ng-if="profile.band==='5' && profile.enabled">
+                                            <md-input-container>
+                                                <label data-aut="radios-profiles-label-radio1{{ profile._id }}Channel">Channel</label>
+                                                <md-select ng-model="profile.channel" data-aut="radios-profiles-select-radio1{{ profile._id }}Channel">
+                                                    <md-option value="0">Auto</md-option>
+                                                    <md-option ng-repeat="(channel, text) in a50Channels" value="{{ channel }}">{{ channel }} - {{ text }}</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                        <div ng-if="profile.band==='2.4' && profile.enabled && profile._id!=='Ground'">
+                                            <md-input-container>
+                                                <label data-aut="radios-profiles-label-radio1{{ profile._id }}Channel">Channel</label>
+                                                <md-select ng-model="profile.channel" data-aut="radios-profiles-select-radio1{{ profile._id }}Channel">
+                                                    <md-option value="0">Auto</md-option>
+                                                    <md-option ng-repeat="channel in g24Channels">{{ channel }}</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr ng-if="$index===0 && radios[0].profiles.length > 1">
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab>
+                        <md-tab-label><div class="tab-label" data-aut="radios-security-div-radio2Name">Radio 2 - {{ radios[1].name }}</div></md-tab-label>
+                        <md-tab-body>
+                            <div layout="row">
+                                <div flex="33" layout-padding>
+                                    <md-input-container>
+                                        <label data-aut="radios-security-label-radio2Ssid">SSID</label>
+                                        <input ng-model="radios[1].ssid" data-aut="radios-security-input-radio2Ssid" md-maxlength="32" maxlength="32">
+                                    </md-input-container>
+                                </div>
+                                <div flex="33" layout-padding>
+                                    <md-input-container>
+                                        <label data-aut="radios-security-label-radio2SecurityProfile">Security Profile</label>
+                                        <md-select ng-model="radios[1].security_profile" data-aut="radios-security-select-radio2SecurityProfile">
+                                            <md-option>WPA2</md-option>
+                                            <md-option>None</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div flex="33" layout-padding>
+                                    <span ng-show="radios[1].security_profile==='WPA2'">
+                                        <md-input-container>
+                                            <label data-aut="radios-security-label-radio2Password">Password</label>
+                                            <input ng-model="radios[1].psk" data-aut="radios-security-input-radio2Password" minlength="8"
+                                                   md-maxlength="63" maxlength="63" required set-focus="radios[1].security_profile==='WPA2'">
+                                        </md-input-container>
+                                    </span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div ng-repeat="profile in radios[1].profiles">
+                                <div layout="row">
+                                    <div flex="50" layout-padding>
+                                        <div ng-if="profile._id==='All' || profile._id==='Air'">
+                                            <md-checkbox ng-model="profile.enabled" data-aut="radios-profiles-checkbox-radio2{{ profile._id }}Enabled">
+                                                <div data-aut="radios-profiles-div-radio2{{ profile._id }}Enabled">Cabin Enabled</div>
+                                            </md-checkbox>
+                                        </div>
+                                        <div ng-if="profile._id==='Ground'">
+                                            <md-checkbox ng-model="profile.enabled" data-aut="radios-profiles-checkbox-radio2{{ profile._id }}Enabled">
+                                                <div data-aut="radios-profiles-div-radio2{{ profile._id }}Enabled">FBO Enabled</div>
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <div flex="50" layout-padding>
+                                        <div ng-if="profile.band==='5' && profile.enabled">
+                                            <md-input-container>
+                                                <label data-aut="radios-profiles-label-radio2{{ profile._id }}Channel">Channel</label>
+                                                <md-select ng-model="profile.channel"  data-aut="radios-profiles-select-radio2{{ profile._id }}Channel">
+                                                    <md-option value="0">Auto</md-option>
+                                                    <md-option ng-repeat="(channel, text) in a50Channels" value="{{ channel }}">{{ channel }} - {{ text }}</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                        <div ng-if="profile.band==='2.4' && profile.enabled && profile._id!=='Ground'">
+                                            <md-input-container>
+                                                <label data-aut="radios-profiles-label-radio2{{ profile._id }}Channel">Channel</label>
+                                                <md-select ng-model="profile.channel" data-aut="radios-profiles-select-radio2{{ profile._id }}Channel">
+                                                    <md-option value="0">Auto</md-option>
+                                                    <md-option ng-repeat="channel in g24Channels">{{ channel }}</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr ng-if="$index===0 && radios[1].profiles.length > 1">
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+            </md-card-content>
+        </md-card>
+
+        <div class="fab">
+            <md-button class="md-fab" aria-label="SAVE" ng-click="saveRadios(radios)" data-aut="radios-fab-button-save">
+                <md-icon md-svg-src="img/ic_save_48px.svg"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="snackbar-container" data-snackbar="true" data-aut="radios-snackbar-div-confirm"></div>
+
+    </div>
+</div>

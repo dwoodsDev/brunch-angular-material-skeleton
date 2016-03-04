@@ -1,0 +1,147 @@
+<div id="main">
+    <div ng-controller="BearerController as bearers">
+        <div class="bearer-head">Name</div>
+        <div class="bearer-head">Type</div>
+        <div class="bearer-head">Address mode</div>
+        <div class="bearer-clear"></div>
+
+        <div ng-repeat="bearer in bearers">
+            <div class="bearer-col">{{ bearer._id }}</div>
+            <div class="bearer-col">{{ bearer.type }}</div>
+            <div class="bearer-col">{{ bearer.proto }}</div>
+            <div class="bearer-clear"></div>
+        </div>
+
+        <hr>
+
+        <div class="bearer-col">Select bearer</div>
+        <select ng-model="selected" ng-options="bearer._id for bearer in bearers" class="bearer-input"></select>
+        <div class="bearer-clear"></div>
+
+        <div class="bearer-input">
+            <input type="checkbox" ng-model="selected" ng-checked="selected.enabled" disabled>
+        </div>
+        <div class="bearer-label">Enable at boot</div>
+        <div class="bearer-clear"></div>
+
+        <span class="bearer-input">
+            <input type="checkbox" ng-model="selected" ng-checked="selected.base" disabled>
+        </span>
+        <div class="bearer-label">Base routing</div>
+        <div class="bearer-clear"></div>
+
+        <div ng-show="selected.type=='Wifi'">
+
+            <span class="bearer-input">
+                <input type="checkbox" ng-model="selected" ng-checked="selected.bridged" disabled>
+            </span>
+            <div class="bearer-label">Bridged Interface</div>
+            <div class="bearer-clear"></div>
+
+            <div ng-controller="RadioController">
+                <input type="radio" name="radio" value="1" class="bearer-input" ng-model="selected" ng-checked="selected.radio_id==1" disabled>
+                <div class="bearer-label">&nbsp;Radio {{ radios[0]._id }} - {{ radios[0].name }}</div>
+                <div class="bearer-clear"></div>
+
+                <input type="radio" name="radio" value="2" class="bearer-input" ng-model="selected" ng-checked="selected.radio_id==2" disabled>
+                <div class="bearer-label">&nbsp;Radio {{ radios[1]._id }} - {{ radios[1].name }}</div>
+                <div class="bearer-clear"></div>
+
+                <div class="bearer-col">SSID</div>
+                <input type="text" class="bearer-input" ng-model="selected.ssid" disabled>
+                <div class="bearer-clear">&nbsp;</div>
+
+                <div class="bearer-col">Password</div>
+                <input type="text" class="bearer-input" ng-model="selected.psk" disabled>
+                <div class="bearer-clear">&nbsp;</div>
+
+            </div>
+        </div>
+
+        <div ng-show="selected.type=='Ethernet'">
+            <span class="bearer-input">
+                <input type="checkbox" ng-model="selected" ng-checked="selected.bridged" disabled>
+            </span>
+            <div class="bearer-label">Bridged Interface</div>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">Address Mode</div>
+            <select ng-model="selected.proto" class="bearer-input" disabled>
+                <option value="DHCP" ng-selected="selected.proto=='DHCP'">DHCP</option>
+                <option value="PPP" ng-selected="selected.proto=='PPP'">PPP</option>
+                <option value="Static" ng-selected="selected.proto=='Static'">Static</option>
+            </select>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">NAT Mode</div>
+            <select ng-model="selected.nat" class="bearer-input" disabled>
+                <option value="None" ng-selected="selected.nat=='None'">None</option>
+                <option value="Masquerade" ng-selected="selected.nat=='Masquerade'">Masquerade</option>
+                <option value="One-to-One" ng-selected="selected.nat=='One-to-One'">One-to-One</option>
+            </select>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">VLAN</div>
+            <select class="bearer-input" disabled>
+                <option value="Maint" ng-selected="selected.vid.name=='Maint'">Maint</option>
+                <option value="Gogo" ng-selected="selected.vid.name=='Gogo'">Gogo</option>
+                <option value="Cabin" ng-selected="selected.vid.name=='Cabin'">Cabin</option>
+            </select>
+            <div class="bearer-clear"></div>
+
+            <div ng-if="selected.proto=='Static'">
+
+                <div class="bearer-col">IP Address</div>
+                <input type="text" class="bearer-input" ng-model="selected.ipaddr" disabled>
+                <div class="bearer-clear"></div>
+
+                <div class="bearer-col">Netmask</div>
+                <input type="text" class="bearer-input" ng-model="selected.netmask" disabled>
+                <div class="bearer-clear"></div>
+
+                <div class="bearer-col">Gateway</div>
+                <input type="text" class="bearer-input" ng-model="selected.gateway" disabled>
+                <div class="bearer-clear"></div>
+
+                <div class="bearer-col">DNS</div>
+                <input type="text" class="bearer-input" ng-model="selected.dns" disabled>
+                <div class="bearer-clear"></div>
+            </div>
+        </div>
+
+        <div ng-show="selected.type=='Modem'">
+            <span class="bearer-input">
+                <input type="checkbox" ng-model="selected" disabled>
+            </span>
+            <div class="bearer-label">Allow International Roaming</div>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">APN</div>
+            <input type="text" class="bearer-input" ng-model="selected.apn" disabled>
+            <div class="bearer-clear"></div>
+        </div>
+
+        <div ng-show="selected.type=='PPPoE'">
+            <div class="bearer-col">VLAN</div>
+            <select class="bearer-input" disabled>
+                <option value="HD710" ng-selected="selected.vid.name=='HD710'">HD710</option>
+                <option value="Maint" ng-selected="selected.vid.name=='Maint'">Maint</option>
+                <option value="Gogo" ng-selected="selected.vid.name=='Gogo'">Gogo</option>
+                <option value="Cabin" ng-selected="selected.vid.name=='Cabin'">Cabin</option>
+            </select>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">Login</div>
+            <input type="text" class="bearer-input" ng-model="selected.login" disabled>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">Password</div>
+            <input type="text" class="bearer-input" ng-model="selected.passwd" disabled>
+            <div class="bearer-clear"></div>
+
+            <div class="bearer-col">Service Name</div>
+            <input type="text" class="bearer-input" ng-model="selected.service" disabled>
+            <div class="bearer-clear"></div>
+        </div>
+    </div>
+</div>

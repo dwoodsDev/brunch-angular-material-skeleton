@@ -1,0 +1,174 @@
+<div id="main">
+    <div ng-controller="FlightDataController as flightData">
+        <md-card>
+            <md-card-content>
+                <div class="section-head" data-aut="flightdata-speed-div-header">ARINC 429 Speed Configuration</div><br/>
+                <md-tabs md-stretch-tabs="always" md-dynamic-height="true">
+                    <md-tab ng-repeat="channel in [0, 1, 2, 3, 4, 5, 6]">
+                        <md-tab-label><div class="tab-label" data-aut="flightdata-speed-div-channelTab{{ channel + 1 }}">{{ flightData.channels[channel]._id }}</div></md-tab-label>
+                        <md-tab-body>
+                            <div layout="row">
+                                <md-checkbox ng-model="flightData.channels[channel].enabled" data-aut="flightdata-speed-checkbox-channelEnabled{{ channel + 1 }}">
+                                    <div class="arinc-enabled" data-aut="flightdata-speed-div-channelId{{ channel + 1 }}">Rx{{ channel + 1 }}</div>
+                                </md-checkbox>
+                            </div>
+                            <div layout="row">
+                                <div flex="33">
+                                    <div data-aut="flightdata-speed-div-speed{{ channel + 1 }}">Speed</div>
+                                    <md-radio-group ng-model="flightData.channels[channel].speed" data-aut="flightdata-speed-radiogroup-speed{{ channel + 1 }}">
+                                        <md-radio-button value="high">High</md-radio-button>
+                                        <md-radio-button value="low">Low</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div flex="33">
+                                    <div data-aut="flightdata-speed-div-parity{{ channel + 1 }}">Parity</div>
+                                    <md-radio-group ng-model="flightData.channels[channel].parity" data-aut="flightdata-speed-radiogroup-parity{{ channel + 1 }}">
+                                        <md-radio-button value="odd">Odd</md-radio-button>
+                                        <md-radio-button value="even">Even</md-radio-button>
+                                        <md-radio-button value="none">None</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-content>
+                <div class="section-head" data-aut="flightdata-label-div-header">ARINC 429 Label Configuration</div>
+                <div class="arinc-clear">&nbsp;</div>
+                <div class="arinc-col">
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-gmt">GMT</label>
+                        <md-select ng-model="flightData.movingMaps[gmtIndex].active_label" data-aut="flightdata-label-select-gmt">
+                            <md-option ng-repeat="gmtLabel in gmtLabels">{{ gmtLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-eta">ETA</label>
+                        <input ng-model="flightData.movingMaps[etaIndex].active_label" disabled data-aut="flightdata-label-input-eta">
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-latitude">Latitude</label>
+                        <md-select ng-model="flightData.movingMaps[latitudeIndex].active_label" data-aut="flightdata-label-select-latitude">
+                            <md-option ng-repeat="latitudeLabel in latitudeLabels">{{ latitudeLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-groundSpeed">Ground Speed</label>
+                        <md-select ng-model="flightData.movingMaps[groundSpeedIndex].active_label" data-aut="flightdata-label-select-groundSpeed">
+                            <md-option ng-repeat="groundSpeedLabel in groundSpeedLabels">{{ groundSpeedLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-airTemp">Air Temperature</label>
+                        <md-select ng-model="flightData.movingMaps[airTempIndex].active_label" data-aut="flightdata-label-select-airTemp">
+                            <md-option ng-repeat="airTempLabel in airTempLabels">{{ airTempLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="arinc-col">
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-date">Date</label>
+                        <input ng-model="flightData.movingMaps[dateIndex].active_label" disabled data-aut="flightdata-label-input-date">
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-timeToGo">Time to Go</label>
+                        <md-select ng-model="flightData.movingMaps[timeToGoIndex].active_label" data-aut="flightdata-label-select-timeToGo">
+                            <md-option ng-repeat="timeToGoLabel in timeToGoLabels">{{ timeToGoLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-altitude">Altitude</label>
+                        <input ng-model="flightData.movingMaps[altitudeIndex].active_label" disabled data-aut="flightdata-label-input-altitude">
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-longitude">Longitude</label>
+                        <md-select ng-model="flightData.movingMaps[longitudeIndex].active_label" data-aut="flightdata-label-select-longitude">
+                            <md-option ng-repeat="longitudeLabel in longitudeLabels">{{ longitudeLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label data-aut="flightdata-label-label-magneticHeading">Magnetic Heading</label>
+                        <md-select ng-model="flightData.movingMaps[magneticHeadingIndex].active_label" data-aut="flightdata-label-select-magneticHeading">
+                            <md-option ng-repeat="magneticHeadingLabel in magneticHeadingLabels">{{ magneticHeadingLabel }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-content>
+                <div class="section-head" data-aut="flightdata-wow-div-header">Weight on Wheels Settings</div>
+                <div class="arinc-clear">&nbsp;</div>
+                <div layout="row">
+                    <div flex="50">
+                        <md-input-container>
+                            <label data-aut="flightdata-wow-label-source">Weight on Wheels Source</label>
+                            <md-select ng-model="flightData.wowMon[0].source" data-aut="flightdata-wow-select-source">
+                                <md-option value="discrete">Discrete Input</md-option>
+                                <md-option value="a429">ARINC 429</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div flex="25" ng-if="flightData.wowMon[0].source=='a429'">
+                        <md-input-container>
+                            <label data-aut="flightdata-wow-label-label">Label</label>
+                            <input ng-model="flightData.movingMaps[wowIndex].active_label" disabled data-aut="flightdata-wow-input-label">
+                        </md-input-container>
+                    </div>
+                    <div flex="25" ng-if="flightData.wowMon[0].source=='a429'">
+                        <md-input-container>
+                            <label data-aut="flightdata-wow-label-bit">Bit</label>
+                            <input ng-model="flightData.movingMaps[wowIndex].bit" disabled data-aut="flightdata-wow-input-bit">
+                        </md-input-container>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-content>
+                <div class="section-head" data-aut="flightdata-map-div-header">Map Settings</div>
+                <div class="arinc-clear">&nbsp;</div>
+                <div class="arinc-col">
+                    <md-input-container>
+                        <label data-aut="flightdata-map-label-source">Map Source</label>
+                        <md-select ng-model="flightData.movingMaps[mapIndex].source" data-aut="flightdata-map-select-source">
+                            <md-option value="a429">ARINC 429</md-option>
+                            <md-option value="rs232">RS-232</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="arinc-col">
+                    <md-input-container>
+                        <label data-aut="flightdata-map-label-origDest">Origin/Destination</label>
+                        <md-select ng-model="flightData.movingMaps[origDestIndex].source" data-aut="flightdata-map-select-origDest">
+                            <md-option value="gama">074,075,113,300-307</md-option>
+                            <md-option value="fusion">223</md-option>
+                            <md-option value="proline21">361,362,365,366</md-option>
+                            <md-option value="acms">061,062,063</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="arinc-col" ng-if="flightData.movingMaps[mapIndex].source=='rs232'">
+                    <md-input-container>
+                        <label data-aut="flightdata-map-label-rs232">RS-232 baud rate</label>
+                        <input value="{{ flightData.rs232[0].baud }}/{{ flightData.rs232[0].bits }}-{{ flightData.rs232[0].parity }}-{{ flightData.rs232[0].stop }}" disabled data-aut="flightdata-map-input-rs232">
+                    </md-input-container>
+                </div>
+                <div class="arinc-col">&nbsp;</div>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <div layout="row" class ="md-action-response" ng-show="confirmed">
+                    <img flex src="img/check-green.svg">
+                </div>
+                <div layout="row" class="md-action-response" ng-show="failed">
+                    <div flex="initial">Error: Failed To Confirm Configuration</div>
+                    <img flex src="img/exclpt-red.svg">
+                </div>
+                <md-button ng-click="confirmFlightDataConfig(flightData)">Confirm</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

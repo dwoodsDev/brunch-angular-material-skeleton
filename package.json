@@ -1,0 +1,42 @@
+{
+  "name": "jaguar-config-portal",
+  "description": "Gogo 4G Config GUI",
+  "author": "Gogo Business Aviation Services",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gogobiz/ucs-jaguar/src/www"
+  },
+  "scripts": {
+    "start": "node ./server/start-server.js 3333",
+    "test": "mocha --recursive ./server/test"
+  },
+  "dependencies": {
+    "async": "1.5.2",
+    "body-parser": "1.14.2",
+    "brunch": "2.2.1",
+    "chai-as-promised": "5.2.0",
+    "clean-css-brunch": "1.8.0",
+    "css-brunch": "1.7.0",
+    "express": "4.13.4",
+    "javascript-brunch": "1.8.0",
+    "jshint-brunch": "1.8.0",
+    "mongoose": "4.3.7",
+    "ng-annotate-uglify-js-brunch": "2.0.0",
+    "path": "0.12.7",
+    "q": "1.4.1",
+    "stylus-brunch": "1.8.1",
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {
+    "angular": "1.4.9",
+    "angular-material": "1.0.2",
+    "angular-route": "1.4.9",
+    "chai": "*",
+    "mocha": "*",
+    "mocha-jenkins-reporter": "0.1.9",
+    "proxyquire": "1.7.3",
+    "request": "2.67.0",
+    "sinon": "1.17.2"
+  }
+}

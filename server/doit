@@ -1,0 +1,6 @@
+#! /bin/bash
+
+mongo jaguar --eval 'db.dropDatabase()'
+for f in im*js; do node $f ; done
+./mknew
+
