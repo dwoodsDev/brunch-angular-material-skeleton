@@ -20,4 +20,4 @@ var activeLink = function ($location) {
   };
 };
 
-angular.module('jaguarConfigPortal').directive('activeLink', ['$location', activeLink]);
+angular.module('myModule').directive('activeLink', ['$location', activeLink]);

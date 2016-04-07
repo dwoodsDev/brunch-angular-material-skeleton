@@ -1,1 +1,1 @@
-angular.module('jaguarConfigPortal', ['ngMaterial', 'ngRoute', 'ui.router']);
+angular.module('myModule', ['ngMaterial', 'ngRoute', 'ui.router']);

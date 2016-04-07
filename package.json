@@ -1,11 +1,11 @@
 {
-  "name": "jaguar-config-portal",
-  "description": "Gogo 4G Config GUI",
-  "author": "Gogo Business Aviation Services",
+  "name": "brunch-angular-material-skeleton",
+  "description": "Brunch Angular Material Skeleton",
+  "author": "Dylan Woods",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gogobiz/ucs-jaguar/src/www"
+    "url": "https://github.com/dwoodsDev/brunch-angular-material-skeleton"
   },
   "scripts": {
     "start": "node ./server/start-server.js 3333",
@@ -13,30 +13,35 @@
   },
   "dependencies": {
     "async": "1.5.2",
-    "body-parser": "1.14.2",
-    "brunch": "2.2.1",
-    "chai-as-promised": "5.2.0",
-    "clean-css-brunch": "1.8.0",
-    "css-brunch": "1.7.0",
-    "express": "4.13.4",
-    "javascript-brunch": "1.8.0",
-    "jshint-brunch": "1.8.0",
-    "mongoose": "4.3.7",
-    "ng-annotate-uglify-js-brunch": "2.0.0",
+    "express": "*",
     "path": "0.12.7",
     "q": "1.4.1",
-    "stylus-brunch": "1.8.1",
     "underscore": "1.8.3"
   },
   "devDependencies": {
-    "angular": "1.4.9",
-    "angular-material": "1.0.2",
-    "angular-route": "1.4.9",
-    "chai": "*",
-    "mocha": "*",
-    "mocha-jenkins-reporter": "0.1.9",
-    "proxyquire": "1.7.3",
+    "angular": "1.5.0",
+    "angular-material": "1.0.7",
+    "angular-route": "1.5.0",
+    "angular-ui-router": "^0.2.18",
+    "brunch": "2.6.3",
+    "chai": "^3.5.0",
+    "chai-as-promised": "5.2.0",
+    "clean-css-brunch": "2.0.0",
+    "css-brunch": "2.6.1",
+    "eslint-brunch": "^2.0.0",
+    "eslint-config-google": "^0.4.0",
+    "javascript-brunch": "^2.0.0",
+    "mocha": "^2.3.3",
+    "ng-annotate-uglify-js-brunch": "^2.0.0",
     "request": "2.67.0",
-    "sinon": "1.17.2"
+    "sinon": "1.17.2",
+    "sinon-as-promised": "4.0.0",
+    "stylus-brunch": "^2.6.0"
+  },
+  "eslintConfig": {
+    "extend": "google",
+    "env": {
+      "mocha": true
+    }
   }
 }

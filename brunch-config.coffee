@@ -9,7 +9,7 @@ order =
     "vendor/scripts/gogo-require.js"
   ]
   after: [
-    "test/vendor/scripts/gogo-mocha.js",
+    "test/vendor/scripts/mochaSetup.js",
     "test/vendor/scripts/angular-mocks-1.4.7.js"
   ]
 

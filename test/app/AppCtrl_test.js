@@ -1,7 +1,7 @@
 describe('AppCtrl', function () {
   var $location, scope, $timeout, $mdSidenav, AppCtrl;
 
-  beforeEach(module('jaguarConfigPortal', function ($provide) {
+  beforeEach(module('myModule', function ($provide) {
     $mdSidenav = {
       close: sinon.stub(),
       toggle: sinon.stub()

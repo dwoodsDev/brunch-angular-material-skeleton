@@ -3,7 +3,7 @@ describe('active-link', function () {
     $location,
     $rootScope;
 
-  beforeEach(module('jaguarConfigPortal'));
+  beforeEach(module('myModule'));
 
   beforeEach(inject(function(_$compile_, _$location_, _$rootScope_) {
     $compile = _$compile_;

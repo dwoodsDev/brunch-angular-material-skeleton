@@ -26,4 +26,4 @@ var AppCtrl = function ($route, $scope, $timeout, $mdSidenav) {
   };
 };
 
-angular.module('jaguarConfigPortal').controller('AppCtrl', AppCtrl);
+angular.module('myModule').controller('AppCtrl', AppCtrl);

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="jaguarConfigPortal">
+<html lang="en" ng-app="myModule">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Jaguar</title>
+  <title>Brunch Angular Material Skeleton</title>
   <base href="/">
   <link href="css/vendor.css" rel="stylesheet"/>
   <link href="css/app.css" rel="stylesheet"/>
@@ -15,33 +15,17 @@
 <body ng-controller="AppCtrl" ng-cloak class="layout-row" cz-shortcut-listen="true" style="">
   <md-backdrop class="md-sidenav-backdrop md-opaque ng-scope md-locked-open" style=""></md-backdrop>
   <md-sidenav class="site-sidenav md-whiteframe-z2 ng-isolate-scope md-closed md-locked-open" md-component-id="menu" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1" style="">
-    <header md-ink-ripple>
-      <a ui-sref="equipment"><img id="ba-logo" src="img/BA%20Logo.png"></a>
-    </header>
     <md-content role="navigation" ng-click="closeMenu()" lass="flex">
-      <nav class="config-menu" active-link>
+      <nav class="menu" active-link>
         <li class="menu-item">
-          <a ui-sref="equipment" md-button md-ink-ripple>Equipment Configuration</a>
-        </li>
-        <li class="menu-item">
-          <a ui-sref="bearers" md-button md-ink-ripple>Bearers</a>
-        </li>
-        <li class="menu-item">
-          <a ui-sref="clients" md-button md-ink-ripple>Network Clients</a>
-        </li>
-        <li class="menu-item">
-          <a ui-sref="radios" md-button md-ink-ripple data-aut="index-menu-a-radios">Wifi Radios</a>
-        </li>
-        <li class="menu-item">
-          <a ui-sref="flightdata" md-button md-ink-ripple data-aut="index-menu-a-flightdata">Flight Data</a>
+          <a ui-sref="route" md-button md-ink-ripple>Route</a>
         </li>
       </nav>
-      <save-config-button></save-config-button>
     </md-content>
   </md-sidenav>
   <div tabindex="-1" role="main" class="layout-column flex">
     <md-toolbar ng-click="openMenu()" class="md-whiteframe-glow-z1 site-content-toolbar" md-ink-ripple>
-      <div class="md-toolbar-tools jaguar-toolbar" tabindex="-1" role="button">
+      <div class="md-toolbar-tools toolbar" tabindex="-1" role="button">
         <div>
           <button class="md-icon-button md-button hide-gt-md" type="button" aria-label="Toggle Menu">
             <md-icon class="menu-icon ng-scope ng-isolate-scope" aria-hidden="true" md-ink-ripple>
@@ -76,7 +60,7 @@
     <md-content ui-view md-scroll-y class="layout-padding ng-scope flex">
     </md-content>
     <footer>
-      <p>&copy;2016 Gogo. All rights reserved. | Jaguar Version n.n.n.n</p>
+      <p>Foobar. All rights reserved. | La dida</p>
   </footer>
   </div>
 </body>
