@@ -1,3 +1,5 @@
+require('mocha');
+
 (function (global, mocha, chai, mochaPhantomJs) {
   "use strict";
 

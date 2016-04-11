@@ -1,4 +1,4 @@
-var activeLink = function ($location) {
+function activeLink($location) {
   return {
     restrict: 'A',
     replace: false,
