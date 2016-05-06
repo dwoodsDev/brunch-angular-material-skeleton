@@ -1,0 +1,35 @@
+<div ng-cloak>
+  <md-menu md-position-mode="target-right target" class="user-menu" ng-cloak ng-controller="UserController">
+    <md-button class="login" arial-label="user" data-aut="toolbar-login-button-loginMenu" ng-click="$mdOpenMenu($event)">
+      <span >{{user.displayName}}</span>
+      <md-icon md-svg-src="img/user-gogo-text-gray.svg" aria-label="user"></md-icon>
+    </md-button>
+    <md-menu-content ng-cloak>
+      <div layout-padding>
+        <form name="loginForm">
+          <div ng-show="user.error">
+            <md-subheader>{{user.error}}<img flex src="img/exclpt-red.svg"></md-subheader>
+          </div>
+          <md-input-container ng-show="!user.authorized">
+            <label>Username</label>
+            <input data-aut="toolbar-login-input-username" ng-model="user.name" required>
+          </md-input-container>
+          <md-input-container ng-show="!user.authorized">
+            <label>Password</label>
+            <input data-aut="toolbar-login-input-password" ng-model="user.password" type="password" required>
+          </md-input-container>
+          <md-menu-item>
+            <div layout="row" layout-align="end">
+              <md-button type="submit"
+                         class="login-button"
+                         data-aut="toolbar-login-button-loginButton"
+                         ng-bind="loginButtonValue"
+                         ng-click="submitUser(user)"
+                         md-prevent-menu-close="md-prevent-menu-close">Log in</md-button>
+            </div>
+          </md-menu-item>
+        </form>
+      </div>
+    </md-menu-content>
+  </md-menu>
+</div>

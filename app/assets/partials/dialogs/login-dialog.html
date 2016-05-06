@@ -1,0 +1,25 @@
+<md-dialog class="md-dialog" ng-cloak>
+  <md-dialog-content class="md-dialog-content" layout-padding>
+    <h4 class="md-title restarting-dialog">You must log in to access configuration</h4>
+    <div ng-show="user.error">
+      <md-subheader ng-show="user.error">{{user.error}}<img flex src="img/exclpt-red.svg"></md-subheader>
+    </div>
+    <form name="loginForm">
+      <md-input-container ng-show="!user.authorized">
+        <label>Username</label>
+        <input data-aut="toolbar-login-input-username" ng-model="user.name" required>
+      </md-input-container>
+      <md-input-container ng-show="!user.authorized">
+        <label>Password</label>
+        <input data-aut="toolbar-login-input-password" ng-model="user.password" type="password" required>
+      </md-input-container>
+      <div layout="row" layout-align="end">
+        <md-button type="submit"
+                   class="login-button"
+                   data-aut="toolbar-login-button-loginButton"
+                   ng-bind="loginButtonValue"
+                   ng-click="submitUser(user)">Log in</md-button>
+      </div>
+    </form>
+  </md-dialog-content>
+</md-dialog>
