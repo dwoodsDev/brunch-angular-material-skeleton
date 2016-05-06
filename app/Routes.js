@@ -6,8 +6,13 @@ myModule.config(function ($urlRouterProvider, $stateProvider, $locationProvider)
       url: '/',
       templateUrl : 'pages/route.html',
       controller  : 'RouteController'
+    })
+
+    .state('404', {
+      url: '/404',
+      templateUrl: '/404.html'
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/404');
   $locationProvider.html5Mode(true);
 });
