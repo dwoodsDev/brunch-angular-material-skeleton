@@ -1,14 +1,15 @@
 order =
+  before: [
+    "vendor/scripts/angular-1.5.0.js",
+    "vendor/scripts/angular-route-1.5.0.js"
+  ]
   after: [
     'test/vendor/scripts/mochaSetup.js',
-    'test/vendor/scripts/angular-mocks-1.4.7.js'
+    'test/vendor/scripts/angular-material-mocks-1.0.7.js'
   ]
 
 exports.config =
   sourceMaps: true
-
-  server:
-    path: 'server/Server.js'
 
   paths:
     watched: ['app', 'test', 'vendor']
@@ -38,7 +39,7 @@ exports.config =
       joinTo: 'js/app.js'
 
   modules:
-    definition: false,
+    definition: 'commonjs',
     wrapper: false
 
   npm:
@@ -46,9 +47,6 @@ exports.config =
       'angular-material': ['angular-material.css']
 
   plugins:
-    babel:
-      presets: ['es2015']
-
     stylus:
       includeCss: true
 
@@ -77,6 +75,3 @@ exports.config =
       npm:
         styles:
           mocha: ['mocha.css']
-
-        stylus:
-          includeCss: true

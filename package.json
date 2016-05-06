@@ -8,24 +8,14 @@
     "url": "https://github.com/dwoodsDev/brunch-angular-material-skeleton"
   },
   "scripts": {
-    "start": "node ./server/start-server.js 3333",
+    "start": "brunch watch --server",
     "test": "mocha --recursive ./server/test"
   },
   "dependencies": {
-    "async": "1.5.2",
-    "express": "4.13.4",
-    "lodash": "4.9.0",
-    "path": "0.12.7",
-    "q": "1.4.1",
-    "underscore": "1.8.3"
-  },
-  "devDependencies": {
     "angular": "1.5.0",
     "angular-material": "1.0.7",
     "angular-route": "1.5.0",
     "angular-ui-router": "^0.2.18",
-    "babel-brunch": "~6.0.0",
-    "babel-preset-es2015": "~6.3.13",
     "brunch": "2.6.3",
     "chai": "^3.5.0",
     "chai-as-promised": "5.2.0",
