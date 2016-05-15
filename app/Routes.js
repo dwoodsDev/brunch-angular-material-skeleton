@@ -8,11 +8,10 @@ myModule.config(function ($urlRouterProvider, $stateProvider, $locationProvider)
       controller  : 'RouteController'
     })
 
-    .state('404', {
-      url: '/404',
-      templateUrl: '/404.html'
+    .state('notFound', {
+      url: '^*path',
+      templateUrl: '404.html'
     });
 
-  $urlRouterProvider.otherwise('/404');
   $locationProvider.html5Mode(true);
 });

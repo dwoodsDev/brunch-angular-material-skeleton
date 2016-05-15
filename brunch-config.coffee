@@ -1,10 +1,15 @@
 order =
   before: [
-    "vendor/scripts/angular-1.5.0.js",
-    "vendor/scripts/angular-route-1.5.0.js"
+    'vendor/scripts/angular-1.5.0.js',
+    'vendor/scripts/angular-route-1.5.0.js'
   ]
   after: [
+    'test/vendor/scripts/jquery-2.2.3.js',
+    'test/vendor/scripts/require-2.2.0.js',
+    'test/vendor/scripts/requireSetup.js',
+    'test/vendor/scripts/mocha-2.4.5.js',
     'test/vendor/scripts/mochaSetup.js',
+    'test/vendor/scripts/angular-mocks-1.4.7.js'
     'test/vendor/scripts/angular-material-mocks-1.0.7.js'
   ]
 
@@ -67,11 +72,3 @@ exports.config =
         stylesheets:
           joinTo:
             'test/css/vendor.css': /^test(\\|\/)(?=vendor)/
-
-      modules:
-        definition: false,
-        wrapper: false
-
-      npm:
-        styles:
-          mocha: ['mocha.css']
